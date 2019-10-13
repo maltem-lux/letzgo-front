@@ -3,6 +3,8 @@ import {AbilitiesService} from '../../services/abilities/abilities.service';
 import {Ability} from '../../models/ability';
 import {CharAbilities} from '../../models/charAbilities';
 import {Tools} from '../../utils/tools';
+import {Router, RouterModule} from "@angular/router";
+import {Location} from "@angular/common";
 
 
 @Component({
@@ -16,8 +18,7 @@ export class DashboardComponent implements OnInit {
   private _abilities: Array<Ability>;
   private _charAbilities: Map<number, CharAbilities>;
 
-  constructor(abilitiesService: AbilitiesService
-  ) {
+  constructor(abilitiesService: AbilitiesService, private _location: Location) {
     this.abilitiesService = abilitiesService;
     this.charAbilities = new Map();
   }
@@ -54,5 +55,9 @@ export class DashboardComponent implements OnInit {
 
   set charAbilities(value: Map<number, CharAbilities>) {
     this._charAbilities = value;
+  }
+
+  public back() {
+    this._location.back();
   }
 }

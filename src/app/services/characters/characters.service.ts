@@ -14,4 +14,11 @@ export class CharactersService {
   constructor(http: HttpClient) {
     this.http = http;
   }
+
+  public getCharactersByPlayerId(): Observable<Array<Character>> {
+    return this.http.get<Array<Character>>(Tools.SERVER + '/characters')
+      .pipe(res => {
+        return res;
+      });
+  }
 }
