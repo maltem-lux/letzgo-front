@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "appfinder-front": {
+    "letzgo-front": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/appfinder-front",
+            "outputPath": "dist/letzgo-front",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -63,18 +63,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "appfinder-front:build"
+            "browserTarget": "letzgo-front:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "appfinder-front:build:production"
+              "browserTarget": "letzgo-front:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "appfinder-front:build"
+            "browserTarget": "letzgo-front:build"
           }
         },
         "test": {
@@ -111,11 +111,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "appfinder-front:serve"
+            "devServerTarget": "letzgo-front:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "appfinder-front:serve:production"
+              "devServerTarget": "letzgo-front:serve:production"
             }
           }
         },
@@ -126,5 +126,5 @@
       }
     }
   },
-  "defaultProject": "appfinder-front"
+  "defaultProject": "letzgo-front"
 }
