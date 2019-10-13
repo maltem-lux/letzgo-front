@@ -22,4 +22,8 @@ export class AbilitiesService {
         return res;
     });
   }
+
+  public getCharAbilities(): Observable<Array<CharAbilities>> {
+    return this.http.get<Array<CharAbilities>>(Tools.SERVER + '/charAbilities');
+  }
 }

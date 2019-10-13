@@ -14,18 +14,27 @@ export class DashboardComponent implements OnInit {
 
   private abilitiesService: AbilitiesService;
   private _abilities: Array<Ability>;
-  private _charAbilities: Array<CharAbilities>;
+  private _charAbilities: Map<number, CharAbilities>;
 
   constructor(abilitiesService: AbilitiesService
   ) {
     this.abilitiesService = abilitiesService;
+    this.charAbilities = new Map();
   }
 
   ngOnInit() {
     Tools.CHARACTER = 1;
     this.abilitiesService.getAbilities().subscribe(
-      (res: Array<Ability>) => {
-        this.abilities = res;
+      (resA: Array<Ability>) => {
+        this.abilities = resA;
+        this.abilitiesService.getCharAbilities().subscribe(
+          (resCa: Array<CharAbilities>) => {
+            this._abilities.forEach(a => {
+              this._charAbilities.set(a.abilityId,
+                resCa.find(ca => ca.abilityId === a.abilityId ));
+            });
+            console.log(this.charAbilities);
+          });
       }
     );
   }
@@ -39,11 +48,11 @@ export class DashboardComponent implements OnInit {
     this._abilities = value;
   }
 
-  get charAbilities(): Array<CharAbilities> {
+  get charAbilities(): Map<number, CharAbilities> {
     return this._charAbilities;
   }
 
-  set charAbilities(value: Array<CharAbilities>) {
+  set charAbilities(value: Map<number, CharAbilities>) {
     this._charAbilities = value;
   }
 }
