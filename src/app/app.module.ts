@@ -10,6 +10,7 @@ import {MatTooltipModule} from '@angular/material';
 import 'hammerjs';
 import {HomeComponent} from './components/home/home.component';
 import {CharacterBasicInformationComponent} from './components/character-basic-information/character-basic-information.component';
+import {CharacterAbilitiesComponent} from './components/character-abilities/character-abilities.component';
 
 
 const routes: Routes = [
@@ -23,7 +24,8 @@ const routes: Routes = [
     AppComponent,
     HomeComponent,
     DashboardComponent,
-    CharacterBasicInformationComponent
+    CharacterBasicInformationComponent,
+    CharacterAbilitiesComponent
   ],
   imports: [
     BrowserModule,
