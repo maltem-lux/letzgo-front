@@ -3,8 +3,10 @@ import {AbilitiesService} from '../../services/abilities/abilities.service';
 import {Ability} from '../../models/ability';
 import {CharAbilities} from '../../models/charAbilities';
 import {Tools} from '../../utils/tools';
-import {Router, RouterModule} from "@angular/router";
-import {Location} from "@angular/common";
+import {ActivatedRoute, Params, Router, RouterModule} from '@angular/router';
+import {Location} from '@angular/common';
+import {CharactersService} from '../../services/characters/characters.service';
+import {Character} from '../../models/character';
 
 
 @Component({
@@ -14,21 +16,32 @@ import {Location} from "@angular/common";
 })
 export class DashboardComponent implements OnInit {
 
-  private abilitiesService: AbilitiesService;
   private _abilities: Array<Ability>;
   private _charAbilities: Map<number, CharAbilities>;
+  private _charId: number;
+  private _current: Character;
 
-  constructor(abilitiesService: AbilitiesService, private _location: Location) {
-    this.abilitiesService = abilitiesService;
-    this.charAbilities = new Map();
+  constructor(private _abilitiesService: AbilitiesService,
+              private _charactersService: CharactersService,
+              private _location: Location, private route: ActivatedRoute, private router: Router) {
+    this._charAbilities = new Map();
+    this.route.params.subscribe(params => {
+      // tslint:disable-next-line:radix
+      this._charId = Number.parseInt(params.charId);
+    });
   }
 
   ngOnInit() {
-    Tools.CHARACTER = 1;
-    this.abilitiesService.getAbilities().subscribe(
+    Tools.CHARACTER = this._charId;
+    this.loadAbilities();
+    this.loadBasicInformation();
+  }
+
+  private loadAbilities() {
+    this._abilitiesService.getAbilities().subscribe(
       (resA: Array<Ability>) => {
         this.abilities = resA;
-        this.abilitiesService.getCharAbilities().subscribe(
+        this._abilitiesService.getCharAbilities().subscribe(
           (resCa: Array<CharAbilities>) => {
             this._abilities.forEach(a => {
               this._charAbilities.set(a.abilityId,
@@ -38,6 +51,13 @@ export class DashboardComponent implements OnInit {
           });
       }
     );
+  }
+
+  private loadBasicInformation() {
+    this._charactersService.getCharacterById(this._charId)
+      .subscribe( (res: Character) => {
+        this._current = res;
+    });
   }
 
 

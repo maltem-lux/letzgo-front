@@ -21,4 +21,11 @@ export class CharactersService {
         return res;
       });
   }
+
+  public getCharacterById(charId: number): Observable<Character> {
+    return this.http.get<Character>(Tools.SERVER + '/characters?charId=' + charId)
+      .pipe(res => {
+        return res;
+      });
+  }
 }
