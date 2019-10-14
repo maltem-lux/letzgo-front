@@ -19,7 +19,7 @@ export class DashboardComponent implements OnInit {
   private _abilities: Array<Ability>;
   private _charAbilities: Map<number, CharAbilities>;
   private _charId: number;
-  private _current: Character;
+  private _currentChar: Character;
 
   constructor(private _abilitiesService: AbilitiesService,
               private _charactersService: CharactersService,
@@ -47,7 +47,6 @@ export class DashboardComponent implements OnInit {
               this._charAbilities.set(a.abilityId,
                 resCa.find(ca => ca.abilityId === a.abilityId ));
             });
-            console.log(this.charAbilities);
           });
       }
     );
@@ -56,10 +55,13 @@ export class DashboardComponent implements OnInit {
   private loadBasicInformation() {
     this._charactersService.getCharacterById(this._charId)
       .subscribe( (res: Character) => {
-        this._current = res;
+        this._currentChar = res;
     });
   }
 
+  get currentChar(): Character {
+    return this._currentChar;
+  }
 
   get abilities(): Array<Ability> {
     return this._abilities;
