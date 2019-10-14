@@ -1,0 +1,32 @@
+<div class="row">
+  <div class="col-12" style="color:white; background-color: black; text-align: center">BASIC INFORMATION</div>
+</div>
+<div class="row">
+  <div class="col-md-6 col-sm-12" >
+    <div class="row" style="font-size:11px; white-space: nowrap;overflow: hidden; text-align: center">
+      <label for="input-char-name">Character Name</label>
+      <input *ngIf="currentChar && currentChar.name" id="input-char-name" class="col-12" type="text" placeholder="Character Name" value="{{currentChar.name}}" />
+
+      <label for="input-char-alignment">Alignment</label>
+      <input *ngIf="currentChar && currentChar.alignment" id="input-char-alignment" class="col-12" type="text" placeholder="Alignment" value="{{currentChar.alignment}}" />
+
+      <label for="input-char-race">Race</label>
+      <input *ngIf="currentChar && currentChar.race" id="input-char-race" class="col-12" type="text" placeholder="Race" value="{{currentChar.race}}" />
+
+      <label for="input-char-deity">Deity</label>
+      <input *ngIf="currentChar && currentChar.deity" id="input-char-deity" class="col-12" type="text" placeholder="Deity" value="{{currentChar.deity}}" />
+
+      <label for="input-char-age">Age</label>
+      <input *ngIf="currentChar && currentChar.age" id="input-char-age" class="col-12" type="number" placeholder="Age" value="{{currentChar.age}}" />
+
+      <label for="input-char-gender">Gender</label>
+      <input *ngIf="currentChar && currentChar.gender" id="input-char-gender" class="col-12" type="text" placeholder="Gender" value="{{currentChar.gender}}" />
+
+      <label for="input-char-weight">Weight</label>
+      <input *ngIf="currentChar && currentChar.weight" id="input-char-weight" class="col-12" type="text" placeholder="Weight" value="{{currentChar.weight}} {{currentChar.weightUnit}}" />
+
+      <label for="input-char-height">Height</label>
+      <input *ngIf="currentChar && currentChar.height" id="input-char-height" class="col-12" type="text" placeholder="Height" value="{{currentChar.height}} {{currentChar.heightUnit}}" />
+    </div>
+  </div>
+</div>

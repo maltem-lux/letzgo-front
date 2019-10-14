@@ -1,12 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AbilitiesService} from '../../services/abilities/abilities.service';
 import {Ability} from '../../models/ability';
 import {CharAbilities} from '../../models/charAbilities';
-import {Tools} from '../../utils/tools';
-import {ActivatedRoute, Params, Router, RouterModule} from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
 import {Location} from '@angular/common';
-import {CharactersService} from '../../services/characters/characters.service';
-import {Character} from '../../models/character';
 
 
 @Component({
@@ -17,13 +14,11 @@ import {Character} from '../../models/character';
 export class DashboardComponent implements OnInit {
 
   private _abilities: Array<Ability>;
-  private _charAbilities: Map<number, CharAbilities>;
+  private readonly _charAbilities: Map<number, CharAbilities>;
   private _charId: number;
-  private _currentChar: Character;
 
   constructor(private _abilitiesService: AbilitiesService,
-              private _charactersService: CharactersService,
-              private _location: Location, private route: ActivatedRoute, private router: Router) {
+              private _location: Location, private route: ActivatedRoute) {
     this._charAbilities = new Map();
     this.route.params.subscribe(params => {
       // tslint:disable-next-line:radix
@@ -32,9 +27,7 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {
-    Tools.CHARACTER = this._charId;
     this.loadAbilities();
-    this.loadBasicInformation();
   }
 
   private loadAbilities() {
@@ -52,15 +45,8 @@ export class DashboardComponent implements OnInit {
     );
   }
 
-  private loadBasicInformation() {
-    this._charactersService.getCharacterById(this._charId)
-      .subscribe( (res: Character) => {
-        this._currentChar = res;
-    });
-  }
-
-  get currentChar(): Character {
-    return this._currentChar;
+  get charId(): number {
+    return this._charId;
   }
 
   get abilities(): Array<Ability> {
@@ -73,10 +59,6 @@ export class DashboardComponent implements OnInit {
 
   get charAbilities(): Map<number, CharAbilities> {
     return this._charAbilities;
-  }
-
-  set charAbilities(value: Map<number, CharAbilities>) {
-    this._charAbilities = value;
   }
 
   public back() {

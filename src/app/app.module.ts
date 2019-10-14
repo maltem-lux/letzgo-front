@@ -8,7 +8,8 @@ import {HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatTooltipModule} from '@angular/material';
 import 'hammerjs';
-import {HomeComponent} from "./components/home/home.component";
+import {HomeComponent} from './components/home/home.component';
+import {CharacterBasicInformationComponent} from './components/character-basic-information/character-basic-information.component';
 
 
 const routes: Routes = [
@@ -21,7 +22,8 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     HomeComponent,
-    DashboardComponent
+    DashboardComponent,
+    CharacterBasicInformationComponent
   ],
   imports: [
     BrowserModule,
