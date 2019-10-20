@@ -12,6 +12,8 @@ import {HomeComponent} from './components/home/home.component';
 import {CharacterBasicInformationComponent} from './components/character-basic-information/character-basic-information.component';
 import {CharacterAbilitiesComponent} from './components/character-abilities/character-abilities.component';
 import {CharacterSkillsComponent} from './components/character-skills/character-skills.component';
+import { FormsModule } from '@angular/forms';
+
 
 
 const routes: Routes = [
@@ -31,6 +33,7 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     RouterModule.forRoot(routes, {scrollPositionRestoration: 'enabled'}),
     HttpClientModule,
     BrowserAnimationsModule,

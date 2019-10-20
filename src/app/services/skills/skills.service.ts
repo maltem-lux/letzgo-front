@@ -3,6 +3,7 @@ import {Skills} from '../../models/skills';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Tools} from '../../utils/tools';
+import {CharSkills} from '../../models/charSkills';
 
 
 @Injectable({
@@ -21,5 +22,9 @@ export class SkillsService {
       .pipe(res => {
         return res;
       });
+  }
+
+  public getCharSkills(): Observable<Array<CharSkills>> {
+    return this.http.get<Array<CharSkills>>(Tools.SERVER + '/charSkills');
   }
 }

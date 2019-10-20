@@ -37,3 +37,15 @@ i {
   color:black;
   background-color:grey;
 }
+
+.new {
+  padding: 0;
+}
+
+.new > label >input {
+  text-align: center;
+}
+
+.new > label {
+  margin: 0;
+}

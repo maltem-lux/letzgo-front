@@ -1,8 +1,6 @@
 export class CharSkills {
-  public primaryStat: string;
-  public name: string;
-  public checked: boolean;
-  public modifier: number;
-  public description: string;
-  public total: number;
+  public charSkillId: number;
+  public charId: number;
+  public skillId: number;
+  public value: number;
 }
