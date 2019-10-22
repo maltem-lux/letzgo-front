@@ -28,4 +28,11 @@ export class CharactersService {
         return res;
       });
   }
+
+  public createNewCharacter(character: Character): Observable<Character> {
+    return this.http.post<Character>(Tools.SERVER + '/newCharacter', + character)
+      .pipe(res => {
+        return res;
+      });
+  }
 }

@@ -52,6 +52,10 @@ export class HomeComponent implements OnInit {
   }
 
   public save(): void {
-
+    this.charactersService.createNewCharacter(this.newCharacter).subscribe(
+      res => {
+        console.log('Character successfully created');
+      }
+    );
   }
 }
