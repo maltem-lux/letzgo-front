@@ -1,34 +1,38 @@
-import {Ability} from './ability';
-import {Classes} from './classes';
-import {Feats} from './feats';
-import {Gear} from './gear';
-import {Skills} from './skills';
-import {Spells} from './spells';
-import {Wealth} from './wealth';
-import {RaceTraits} from './raceTraits';
-
 export class Character {
   charId: number;
-  abilities: Array<Ability>;
-  age: number;
-  alignment: string;
+  raceId: number;
+  playerId: number;
+  campaign: number;
   campaignCredentials: number;
-  campaignId: number;
-  classes: Array<Classes>;
-  deity: string;
-  feats: Array<Feats>;
-  gear: Array<Gear>;
+  age: number;
   gender: string;
+  name: string;
+  level: number;
+  alignment: string;
+  deity: string;
   height: number;
   heightUnit: string;
-  level: number;
-  name: string;
-  playerName: string;
-  race: string;
-  raceTraits: Array<RaceTraits>;
-  skills: Array<Skills>;
-  spelles: Array<Spells>;
-  wealth: Array<Wealth>;
   weight: number;
   weightUnit: string;
+  creationDate: Date;
+
+
+ constructor() {
+    this.charId = null;
+    this.raceId = null;
+    this.playerId = null;
+    this.campaign = null;
+    this.campaignCredentials = null;
+    this.age = null;
+    this.gender = '';
+    this.name = '';
+    this.level = 1;
+    this.alignment = '';
+    this.deity = '';
+    this.height = null;
+    this.heightUnit = 'kg';
+    this.weight = null;
+    this.weightUnit = 'kg';
+    this.creationDate = new Date();
+  }
 }

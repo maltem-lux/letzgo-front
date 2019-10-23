@@ -13,14 +13,14 @@ export class HomeComponent implements OnInit {
   private charactersService: CharactersService;
   private _characters: Array<Character>;
   private _newChar: boolean;
-  private readonly _newCharacter: Character;
+  private _newCharacter: Character;
 
   constructor(charactersService: CharactersService) {
-    this._newCharacter = new Character();
     this.charactersService = charactersService;
   }
 
   ngOnInit() {
+    this._newCharacter = new Character();
     Tools.PLAYER = 1;
     this.charactersService.getCharactersByPlayerId()
       .subscribe(
