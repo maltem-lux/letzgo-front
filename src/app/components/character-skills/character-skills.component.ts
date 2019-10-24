@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {SkillsService} from '../../services/skills/skills.service';
 import {Skills} from '../../models/skills';
 import {CharSkills} from '../../models/charSkills';
+import {CharAbilities} from '../../models/charAbilities';
 
 
 @Component({
@@ -12,12 +13,14 @@ import {CharSkills} from '../../models/charSkills';
 export class CharacterSkillsComponent implements OnInit {
 
   @Input() charId: number;
+  @Input() abilities: Map<number, CharAbilities>;
   private _skills: Array<Skills>;
   private readonly _charSkills: Map<number, CharSkills>;
 
 
   constructor(private _skillsService: SkillsService) {
     this._charSkills = new Map();
+    this.abilities = new Map();
   }
 
   ngOnInit() {
