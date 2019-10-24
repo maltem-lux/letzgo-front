@@ -31,7 +31,7 @@ export class CharactersService {
 
   public createNewCharacter(character: Character): Observable<Character> {
     console.log(character);
-    return this.http.post<Character>(Tools.SERVER + '/newCharacter', + character)
+    return this.http.post<Character>(Tools.SERVER + '/newCharacter', character)
       .pipe(res => {
         return res;
       });
