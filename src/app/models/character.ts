@@ -30,7 +30,7 @@ export class Character {
     this.alignment = '';
     this.deity = '';
     this.height = null;
-    this.heightUnit = 'kg';
+    this.heightUnit = 'cm';
     this.weight = null;
     this.weightUnit = 'kg';
     this.creationDate = new Date();
