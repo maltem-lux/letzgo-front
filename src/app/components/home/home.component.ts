@@ -22,6 +22,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this._newCharacter = new Character();
     Tools.PLAYER = 1;
+    this._newCharacter.playerId = Tools.PLAYER;
     this.charactersService.getCharactersByPlayerId()
       .subscribe(
       (res: Array<Character>) => {
