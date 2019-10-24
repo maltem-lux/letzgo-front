@@ -49,3 +49,5 @@ i {
 .new > label {
   margin: 0;
 }
+
+.panel-button { display: block; margin: 0 auto; }

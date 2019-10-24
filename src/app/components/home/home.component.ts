@@ -23,12 +23,7 @@ export class HomeComponent implements OnInit {
     this._newCharacter = new Character();
     Tools.PLAYER = 1;
     this._newCharacter.playerId = Tools.PLAYER;
-    this.charactersService.getCharactersByPlayerId()
-      .subscribe(
-      (res: Array<Character>) => {
-        this.characters = res;
-      }
-    );
+    this.loadChars();
   }
 
   get characters(): Array<Character> {
@@ -56,7 +51,18 @@ export class HomeComponent implements OnInit {
     this.charactersService.createNewCharacter(this.newCharacter).subscribe(
       res => {
         console.log('Character successfully created');
+        this._newChar = false;
+        this.loadChars();
       }
     );
+  }
+
+  private loadChars() {
+    this.charactersService.getCharactersByPlayerId()
+      .subscribe(
+        (res: Array<Character>) => {
+          this.characters = res;
+        }
+      );
   }
 }
